@@ -5,14 +5,14 @@ Data Import
 library(tidyverse)
 ```
 
-    ## -- Attaching packages --------------------------- tidyverse 1.3.0 --
+    ## -- Attaching packages --------------------------------------------------- tidyverse 1.3.0 --
 
     ## √ ggplot2 3.3.2     √ purrr   0.3.4
     ## √ tibble  3.0.3     √ dplyr   1.0.2
     ## √ tidyr   1.1.2     √ stringr 1.4.0
     ## √ readr   1.3.1     √ forcats 0.5.0
 
-    ## -- Conflicts ------------------------------ tidyverse_conflicts() --
+    ## -- Conflicts ------------------------------------------------------ tidyverse_conflicts() --
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
@@ -139,25 +139,18 @@ Check out `?read_csv()` for more information.
 Read in an excel file.
 
 ``` r
-mlb_df = read_excel("./data/mlb11.xlsx")
+mlb_df = read_excel("./data/mlb11.xlsx", range = "A1:F6")
 mlb_df
 ```
 
-    ## # A tibble: 30 x 12
-    ##    team   runs at_bats  hits homeruns bat_avg strikeouts stolen_bases  wins
-    ##    <chr> <dbl>   <dbl> <dbl>    <dbl>   <dbl>      <dbl>        <dbl> <dbl>
-    ##  1 Texa~   855    5659  1599      210   0.283        930          143    96
-    ##  2 Bost~   875    5710  1600      203   0.28        1108          102    90
-    ##  3 Detr~   787    5563  1540      169   0.277       1143           49    95
-    ##  4 Kans~   730    5672  1560      129   0.275       1006          153    71
-    ##  5 St. ~   762    5532  1513      162   0.273        978           57    90
-    ##  6 New ~   718    5600  1477      108   0.264       1085          130    77
-    ##  7 New ~   867    5518  1452      222   0.263       1138          147    97
-    ##  8 Milw~   721    5447  1422      185   0.261       1083           94    96
-    ##  9 Colo~   735    5544  1429      163   0.258       1201          118    73
-    ## 10 Hous~   615    5598  1442       95   0.258       1164          118    56
-    ## # ... with 20 more rows, and 3 more variables: new_onbase <dbl>,
-    ## #   new_slug <dbl>, new_obs <dbl>
+    ## # A tibble: 5 x 6
+    ##   team                 runs at_bats  hits homeruns bat_avg
+    ##   <chr>               <dbl>   <dbl> <dbl>    <dbl>   <dbl>
+    ## 1 Texas Rangers         855    5659  1599      210   0.283
+    ## 2 Boston Red Sox        875    5710  1600      203   0.28 
+    ## 3 Detroit Tigers        787    5563  1540      169   0.277
+    ## 4 Kansas City Royals    730    5672  1560      129   0.275
+    ## 5 St. Louis Cardinals   762    5532  1513      162   0.273
 
 Read in a SAS file.
 
@@ -326,3 +319,11 @@ litters_readr
     ## 10 Con8  #3/5/2/2/95             28.5          NA              20
     ## # ... with 39 more rows, and 3 more variables: `Pups born alive` <dbl>, `Pups
     ## #   dead @ birth` <dbl>, `Pups survive` <dbl>
+
+## Exporting data
+
+Export the mlb sub-table.
+
+``` r
+write_csv(mlb_df, "./data/mlb_subtable.csv")
+```

@@ -38,7 +38,7 @@ Check out `?read_csv()` for more information.
 Read in an excel file.
 
 ```{r}
-mlb_df = read_excel("./data/mlb11.xlsx")
+mlb_df = read_excel("./data/mlb11.xlsx", range = "A1:F6")
 mlb_df
 
 ```
@@ -62,6 +62,9 @@ litters_base
 litters_readr
 ```
 
+## Exporting data
+
+Export
 
 
 
